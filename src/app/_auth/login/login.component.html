@@ -1,0 +1,24 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+        <mat-card-header>
+            <mat-card-title><img src="../../../../assets/logo-colored.png" alt="" class="logo"></mat-card-title>
+        </mat-card-header>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <mat-card-content>
+                <mat-form-field class="example-full-width">
+                    <input formControlName="rut" matInput placeholder="Rut" name="rut">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input formControlName="password" matInput type="password" placeholder="Password" name="password">
+                </mat-form-field>
+            </mat-card-content>
+            <button [disabled]="loading" class="btn btn-primary">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Login
+            </button>
+            <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+        </form>
+    </mat-card>
+</div>

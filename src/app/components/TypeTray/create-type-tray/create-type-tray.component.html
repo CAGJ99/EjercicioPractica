@@ -1,0 +1,38 @@
+<div class="tittle">Registrar Tipo de Bandeja</div>
+<div class="login-wrapper2" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box2">
+        <mat-card-header>
+            <mat-card-title>Formulario de Tipo</mat-card-title>
+        </mat-card-header>
+
+        <form [formGroup]="registerType" (ngSubmit)="onSubmit()">
+
+            <mat-card-content>
+                <mat-form-field class="generic-fields">
+                    <input type="text" formControlName="tipo" matInput placeholder="tipo" name="tipo" [ngClass]="{ 'is-invalid': submitted && !f.tipo.errors }">
+                    <mat-error *ngIf="!f.tipo?.errors?.required">
+                        Ingrese <strong>tipo</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width4">
+                    <textarea formControlName="descripcion" matInput placeholder="descripcion" name="descripcion" [ngClass]="{ 'is-invalid': submitted && f.descripcion.errors }"></textarea>
+                    <mat-error *ngIf="!f.descripcion.errors">
+                        ingrese <strong>Descripcion</strong>
+                    </mat-error>
+                </mat-form-field>
+
+            </mat-card-content>
+
+            <button [disabled]="loading" mat-stroked-button color="primary" class="btn-block">Crear Tipo de Bandeja</button>
+            <div *ngIf="error" class="alert alert-danger mt-3 mb-0">
+                {{error}}
+            </div>
+            <div *ngIf="message" class="alert alert-success mt-3 mb-0">
+                {{message}}
+            </div>
+
+            <img *ngIf="loading" src="../../../assets/loading.gif" />
+            <a [routerLink]="['/traytype/list']" class="btn btn-link">volver</a>
+        </form>
+    </mat-card>
+</div>

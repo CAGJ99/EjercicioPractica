@@ -1,0 +1,30 @@
+<div class="container main-container">
+    <div *ngIf="error" class="alert alert-danger mt-3 mb-0">
+        {{error}}</div>
+    <mat-card *ngIf="total">Total de resultados: {{total}}</mat-card>
+    <table *ngIf="!error" mat-table class="mat-elevation-z8" [dataSource]="dataSource">
+        <ng-container matColumnDef="detalles">
+            <th mat-header-cell *matHeaderCellDef> Detalles de bandeja </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-raised-button color="accent" (click)="verBandejas(element._id)"><i class="material-icons">
+                    remove_red_eye
+                    </i><p *ngIf=false>{{element._id}}</p>
+                    </button>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="codigoqr">
+            <th mat-header-cell *matHeaderCellDef> Codigo QR </th>
+            <td mat-cell *matCellDef="let element"> {{element.codigoQr}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fechaIngreso">
+            <th mat-header-cell *matHeaderCellDef> fechaIngreso </th>
+            <td mat-cell *matCellDef="let element"> {{element.fechaIngreso |date:'mediumDate':'+0000'}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[5, 9]" showFirstLastButtons></mat-paginator>
+</div>

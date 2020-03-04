@@ -1,0 +1,61 @@
+<div class="container main-container">
+
+    <table *ngIf="!error" mat-table class="mat-elevation-z8" [dataSource]="dataSource">
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Details Column -->
+
+        <ng-container matColumnDef="rut">
+            <th mat-header-cell *matHeaderCellDef> Rut </th>
+            <td mat-cell *matCellDef="let element">
+                {{element.rut}} </td>
+        </ng-container>
+
+        <!-- Qr code Column -->
+        <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef> nombre </th>
+            <td mat-cell *matCellDef="let element">
+                {{element.nombre}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="apellidos">
+            <th mat-header-cell *matHeaderCellDef> apellidos</th>
+            <td mat-cell *matCellDef="let element">
+                {{element.apPat}} {{element.apMat}}</td>
+        </ng-container>
+        <ng-container matColumnDef="ubicacion">
+            <th mat-header-cell *matHeaderCellDef> ubicacion </th>
+            <td mat-cell *matCellDef="let element"> {{element.ubicacion.lugar}} </td>
+        </ng-container>
+        <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef> acciones </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-mini-fab color="primary" (click)="sendID(element.rut)">
+                    <i class="material-icons">
+                    edit
+                    </i>
+                </button>
+                <button mat-mini-fab color="warn" (click)="deleteUser(element.rut)">
+                    <i class="material-icons">
+                        delete
+                        </i>
+                    </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <div *ngIf="error" class="alert alert-danger mt-3 mb-0">
+        {{error}}</div>
+    <div *ngIf="hecho" class="alert alert-success mt-3 mb-0">
+        {{hecho}}</div>
+    <mat-progress-bar *ngIf="progress" mode="indeterminate"></mat-progress-bar>
+</div>
+<!--
+<a  (click)="verBandejas(element._id)" class="btn btn-outline-light" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    
+                     
+                    
+    </a>-->

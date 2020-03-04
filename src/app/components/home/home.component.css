@@ -1,0 +1,22 @@
+.row {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.content {
+    margin-top: 50px;
+    margin-left: 15px;
+}
+
+.chart-area {
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.card-body {
+    background-color: rgb(255, 255, 255);
+}
+
+.card-header:first-child {
+    background: linear-gradient(#2E323A, #2E323A);
+}

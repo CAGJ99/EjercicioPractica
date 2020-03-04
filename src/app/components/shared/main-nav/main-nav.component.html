@@ -1,0 +1,56 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false" *ngIf="currentUser">
+        <mat-toolbar class="menu">
+            <a [routerLink]="['home']">
+                <div class="logox"><img src="../../../../assets/logo-light.png" alt="" class="positronx"></div>
+            </a>
+        </mat-toolbar>
+        <mat-nav-list>
+
+            <h5 class="titles">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" class="icon">web_asset</mat-icon>Bandejas</h5>
+            <mat-list class="lista" role="list">
+                <mat-list-item role="listitem"> <a class="links" [routerLink]="['tray-list']" mat-list-item>Buscar</a></mat-list-item>
+                <mat-list-item role="listitem">
+                    <a class="links" [routerLink]="['traytype/list']" mat-list-item>
+                        <p>Gestionar Tipos</p>
+                    </a>
+                </mat-list-item>
+                <mat-list-item role="listitem">
+                    <a class="links" [routerLink]="['register/traytype']" mat-list-item>
+                        <p>Registrar Tipo</p>
+                    </a>
+                </mat-list-item>
+            </mat-list>
+            <h5 class="titles"> <i class="material-icons">
+              supervised_user_circle
+              </i>Empleados</h5>
+            <mat-list class="lista" role="list">
+                <mat-list-item role="listitem"><a class="links" [routerLink]="['register']" routerLinkActive="active" mat-list-item>Registrar</a></mat-list-item>
+
+                <mat-list-item role="listitem"> <a class="links" [routerLink]="['get-users']" mat-list-item>Busqueda</a></mat-list-item>
+            </mat-list>
+            <h5 class="titles"> <i class="material-icons">
+                business
+                </i>Sucursales</h5>
+            <mat-list class="lista" role="list">
+                <mat-list-item role="listitem"><a class="links" [routerLink]="['ubication-list']" routerLinkActive="active" mat-list-item>Ver Sucursales</a></mat-list-item>
+
+                <mat-list-item role="listitem"><a class="links" [routerLink]="['create-ubication']" routerLinkActive="active" mat-list-item>Registrar</a></mat-list-item>
+            </mat-list>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary" *ngIf="currentUser">
+            <!--<span class="btns" *ngIf="currentUser">
+            <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+            <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+            </button>
+        </span>-->
+            <span class="nav-tool-items">
+          <a mat-button mat-raised-button (click)="logout()">Log out</a>
+        </span>
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

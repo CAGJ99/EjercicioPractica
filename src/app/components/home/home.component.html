@@ -1,0 +1,97 @@
+<div class=" content">
+    <div class=" row">
+        <div class=" col-12">
+            <div class=" card card-chart">
+                <div class=" card-header">
+                    <div class=" row">
+                        <div class=" col-sm-6 text-left">
+                            <h5 class=" card-category">Reporte de Bandejas </h5>
+                            <h2 class=" card-title"> Anual</h2>
+                        </div>
+
+                    </div>
+                </div>
+                <div class=" card-body">
+                    <div class=" chart-area"><canvas id="chartBig1"> </canvas></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class=" row">
+        <div class=" col-lg-4">
+            <div class=" card card-chart">
+                <div class=" card-header">
+                    <h5 class=" card-category">Reporte de Bandejas por Sucursal</h5>
+
+                </div>
+                <div class=" card-body">
+
+                    <mat-card class="chart-ubication">
+                        <mat-card-header class="cabeza">
+                            <mat-card-title></mat-card-title>
+                            <mat-card-subtitle>
+                                <mat-form-field>
+                                    <mat-label>Sucursal</mat-label>
+                                    <mat-select [formControl]="ubicacionControl">
+                                        <mat-option *ngFor="let sucursal of ubicaciones;let i = index" [value]="sucursal">
+                                            {{ubicaciones[i]._id.lugar}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </mat-card-subtitle>
+
+                        </mat-card-header>
+
+                        <mat-card-content>
+                            <p class="ubicaciontext">
+
+                                <strong>{{ubicacionControl.value?.total}}</strong> <img src="../../../assets/TrayIcon.png" alt="" height="42" width="42">
+                            </p>
+                        </mat-card-content>
+                    </mat-card>
+
+                </div>
+            </div>
+        </div>
+        <div class=" col-lg-4">
+            <div class=" card card-chart">
+                <div class=" card-header">
+                    <h5 class=" card-category">Reporte de Bandejas</h5>
+                    <h3 class=" card-title">
+                        <i class=" tim-icons icon-delivery-fast text-info"> </i>Diario
+                    </h3>
+                </div>
+                <div class=" card-body">
+                    <mat-card class="chart-ubication">
+                        <mat-card-header class="cabeza">
+                            <mat-card-title></mat-card-title>
+                            <mat-card-subtitle>
+                            </mat-card-subtitle>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <p class="ubicaciontext">
+                                <strong class="bandejasdaily">{{daily}}</strong> <img src="../../../assets/TrayIcon.png" alt="" height="42" width="42">
+                            </p>
+                        </mat-card-content>
+                    </mat-card>
+                    <div class=" chart-area">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" col-lg-4">
+            <div class=" card card-chart">
+                <div class=" card-header">
+                    <h5 class=" card-category">Reporte de Bandejas</h5>
+                    <h3 class=" card-title">
+                        <i class=" tim-icons icon-send text-success"> </i> Mensual
+                    </h3>
+                </div>
+                <div class=" card-body">
+                    <div class=" chart-area"><canvas id="chartLineGreen"> </canvas></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

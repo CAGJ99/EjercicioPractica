@@ -1,0 +1,84 @@
+<div class="login-wrapper2" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box2">
+        <mat-card-header>
+            <mat-card-title>Actualizar</mat-card-title>
+        </mat-card-header>
+
+        <form [formGroup]="UpdateForm" (ngSubmit)="updateUser()">
+
+            <mat-card-content *ngFor="let User of user">
+                <mat-form-field class="generic-fields">
+                    <input [(ngModel)]="User.nombre" formControlName="nombre" matInput placeholder="Nombre" name="nombre" [ngClass]="{ 'is-invalid': submitted && !f.nombre.errors }">
+                    <mat-error *ngIf="!f.nombre?.errors?.required">
+                        Ingrese <strong>Nombre</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="generic-fields">
+                    <input formControlName="apPat" [(ngModel)]="User.apPat" matInput placeholder="Apellido Paterno" name="apPat" [ngClass]="{ 'is-invalid': submitted && f.apPat.errors }">
+                    <mat-error *ngIf="!f.apPat.errors">
+                        ingrese <strong>Apellido</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="generic-fields">
+                    <input formControlName="apMat" [(ngModel)]="User.apMat" matInput placeholder="Apellido Materno" name="apMat">
+                </mat-form-field>
+
+                <mat-form-field class="generic-fields">
+                    <input formControlName="rut" [(ngModel)]="User.rut" matInput placeholder="Rut" name="rut" [ngClass]="{ 'is-invalid': submitted && f.rut.errors }">
+                    <mat-error *ngIf="!f.rut.errors">
+                        ingrese <strong>Rut</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="generic-fields">
+                    <mat-label>Sucursal</mat-label>
+                    <mat-select formControlName="ubicacion" [(ngModel)]="User.ubicacion._id">
+                        <mat-option [value]="Ubicaciones[i]._id" *ngFor="let ubicacion of Ubicaciones ;let i =index">
+                            {{Ubicaciones[i].lugar}}
+                        </mat-option>
+
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="generic-fields">
+                    <input formControlName="telefono" [(ngModel)]="User.telefono" matInput placeholder="Teléfono" name="telefono" [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }">
+                    <mat-error *ngIf="!f.telefono.errors">
+                        ingrese <strong>telefono</strong>
+                    </mat-error>
+                </mat-form-field>
+
+            </mat-card-content>
+
+            <button mat-stroked-button color="primary" class="btn-block">Actualizar</button>
+            <div *ngIf="error" class="alert alert-danger mt-3 mb-0">
+                {{error}}
+            </div>
+            <div *ngIf="res" class="alert alert-success mt-3 mb-0">
+                {{message}}
+            </div>
+            <a [routerLink]="['/get-users']" class="btn btn-link">Regresar</a>
+        </form>
+    </mat-card>
+</div>
+
+
+
+<!-- <div class="form-group">
+                <input type="text" [(ngModel)]="user.nombre" class="form-control" placeholder="Name">
+            </div>
+
+            <div class="form-group">
+                <input type="text" [(ngModel)]="user.apPat" class="form-control" placeholder="Email">
+            </div>
+
+            <div class="form-group">
+                <input type="text" [(ngModel)]="user.apMat" class="form-control" placeholder="Phone">
+            </div>
+            <mat-form-field class="generic-fields">
+                <mat-label>Sucursal</mat-label>
+                <mat-select formControlName="ubicacion">
+                    <mat-option [value]="Ubicaciones[i]._id._id" *ngFor="let ubicacion of Ubicaciones;let i =index">{{Ubicaciones[i]._id.lugar}}
+                    </mat-option>
+
+                </mat-select>
+            </mat-form-field>
+                -->
